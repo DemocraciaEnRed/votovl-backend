@@ -38,7 +38,12 @@ app.use(mongoSanitize());
 app.use(compression());
 
 // enable cors
-app.use(cors());
+const corsOptions =  {
+  origin: config.cors.origins,
+  credentials: true
+}
+
+app.use(cors(corsOptions));
 app.options('*', cors());
 
 // jwt authentication
